@@ -21,6 +21,7 @@ app.set('port', process.env.PORT || 3000)
 
 app.use(helmet());
 
+//Authorization function 
 var auth = function (req, res, next) {
     if (req.session && req.session.user) {
         return next();
@@ -33,6 +34,7 @@ var auth = function (req, res, next) {
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
+//Reads the Logs for students and questions
 var accessLogStream = fs.createWriteStream(path.join(__dirname, 'request.log'), { flags: 'a' });
 var queryLogStream = fs.createWriteStream(path.join(__dirname, 'queryLog.log'), { flags: 'a' });
 fs.readFile(__dirname + '/files/UsersClass.txt', 'utf8', function (err, data) {
@@ -109,6 +111,9 @@ app.get("/schema", auth, function (req, res) {
 app.get("/app", auth, function (req, res) {
     var query = req.query.sql;
     var datetime = new Date();
+    
+    //Checks for limit in query. If there is one with a value less than 250 than keep it
+    //Else add a limit of 200
     var question = req.query.question;
     var match = query.match(/limit\s+\d+/i);
     if (match) {
@@ -126,6 +131,8 @@ app.get("/app", auth, function (req, res) {
         // console.log("Jank protection ftw");
         return res.json({ success: false, data: "Contains unauthorized sql" });
     }
+    
+    //Call the query function in the DB helper class
     db.query(query, [], function (err, result) {
         if (result) {
             queryLogStream.write('{\"user\": ' + JSON.stringify(req.session.user) + ', \"class\": ' + JSON.stringify(req.session.class) + ', \"queryCluster\": ' + JSON.stringify(req.session.questionIndex) + ', \"question\": ' + JSON.stringify(question) + ', \"query\": ' + JSON.stringify(query) + ', \"timestamp\": ' + JSON.stringify(datetime) + ', \"results\": ' + JSON.stringify(result.rows) + '}\n');
@@ -153,6 +160,7 @@ app.post("/signin", function (req, res) {
         }
     }
 
+    //Check for user in object
     if (found) {
         user.findUser(req.body.user, function (err, result) {
             if (err) {
@@ -161,6 +169,8 @@ app.post("/signin", function (req, res) {
                 res.redirect("/login");
             }
             //console.log(result.rows);
+            
+            //If User is not found then assign a set of questions
             if (result.rows.length === 0) {
                 var index = 0;
                 for (var i = 0; i < questionIndex; i++) {
@@ -233,6 +243,7 @@ app.post("/questions", auth, function (req, res) {
     });
 });
 
+//Logouts depending on if called by pressing the logout button in header or because of an ajax call
 app.get('/logout', function (req, res) {
     req.session.destroy(function () {
         //console.log("session destroyed");
