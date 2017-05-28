@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>SQL Query Tool</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/main.css">
+  </head>
+  <body>
+  <div class="nabvar navbar-default navbar-static-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">SQL Tester</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a href="/schema">View Schema</a>
+            </li>
+            <% if(currentUser) { %>
+                <li>
+                    <a href="/">Hello, <span id="userID"><%= currentUser %></span></a>
+                </li>
+                <li>
+                    <a href="/logout1">Logout</a>
+                </li>
+           <% } else { %>
+                <li>
+                    <a href="/"> Please sign in </a>
+                </li>
+           <% } %>
+        </ul>
+    </div>
+  </div>
+      <div class = "container">
+        <% errors.forEach(function(error) { %>
+            <div class="alert alert-danger" role="alert">
+            <%= error %>
+            </div>
+       <% }) %>
+
+       <% infos.forEach(function(info){ %>
+            <div class="alert alert-info" role="alert">
+                <%= info %>
+            </div>
+      <% }) %>
+      </div>

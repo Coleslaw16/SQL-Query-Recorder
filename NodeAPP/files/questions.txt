@@ -1,0 +1,46 @@
+5
+5
+4
+5
+4
+What are the different groups that were targeted by hate crimes?
+
+What are the top areas (zip codes) for hate crime occurrences?
+
+What are the top years for hate crime occurrences?
+
+What was the most common motivation of hate crimes?
+
+What groups were the most frequent targets of hate crimes?
+When an officer was assaulted, in what percent of cases did the assault result in death?
+
+What was the most frequent assignment when an officer was assaulted?
+
+What are the top areas (zip codes) for office assaults?
+
+What are the top years for officer assaults?
+
+What was the most frequent activity when an officer was assaulted?
+What is the most common type of firearm recovered for each year?
+
+Did the recovery involve more male than female suspects? What was the percentage of male and female that a weapon was recovered from?
+
+Were any weapons recovered from minors (people under 18 years old)?
+
+What type of crime was the most common for firearm recovery?
+Where (which zip code) were most crimes commited in 2015?
+
+Within this zip code, what were the most common crime type?
+
+What zip code had the most narcotic/drug offenses (NIBRS code)?
+
+List the number of robberies (NIBRS code) by zip code.
+
+What zip code is the safest (=smaller number of crimes)?
+What percentage of robberties (NIBRS code) did not happen in a house/residence (premise_type)?
+
+Of all the robberies (NIBRS code), what percentage were attempted (instead  of completed)? 
+
+Which police division was involved in more drunk driving offenses (NIBRS code)?
+
+Are the top 5 zip codes for robberies (NIBRS code) similar to the top 5 zip codes for narcotic/drug offenses (NIBRS code)?

@@ -1,0 +1,58 @@
+<% include header %>
+  <div class="form-group">
+    &nbsp;
+</div>
+  <div class="container">
+    <div class="row row-eq-height">
+      <div class="panel-group col-xs-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3>Loading Question...</h3>
+          </div>
+          <div class="panel-body">
+            <form action="/app" method="GET" id="sqlID"  role="form">
+              <div class="form-group">
+                <label for="sql">Query Input</label>
+                <textarea class="form-control" rows="15" id="sql"></textarea>
+              </div>
+              <span id="questionLabel">
+              (0/0)
+              </span>
+              <button type="button" class="btn btn-success send buttonHide" id="send" value="send">Finished</button>
+              <div class="btn-group pull-right">
+                  <button type="button" class="btn btn-info" id="backButton" value="Back">Back</button>
+                  <button type="submit" class="btn btn-primary" value="Query!">Submit</button>
+                  <button type="button" class="btn btn-info" id="nextButton" value="Next">Next</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+        <div class="col-xs-6 wrap"><iframe allowfullscreen frameborder="0" style="position:relative; width:100%; height:100%" src="https://www.lucidchart.com/documents/embeddedchart/1ab9a037-ded8-4d5c-93d6-bc0a491353c2" id="04aNDoXz.1BM"></iframe></div>
+    </div>
+    <div class="results"></div>
+    </div>
+    <div class="modalHolder">
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Thank you for participating</h4>
+        </div>
+        <div class="modal-body">
+          <p>You have finished all of the questions!</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success logout" id="logout" value="send">Logout</button>
+        </div>
+      </div>    
+    </div>
+  </div>
+  </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/main.js"></script>
+<% include footer %>
